@@ -18,6 +18,7 @@ root.render(
                 <Route path="/" element={<App />} />
                 <Route path="/station/:id" element={<StationInfo />} />
                 <Route path="/list" element={<List />} />
+                <Route path="/login" element={<Login />} />
             </Routes>
         </BrowserRouter>
     </StrictMode>
