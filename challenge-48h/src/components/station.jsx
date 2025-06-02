@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import List from './List.jsx';
 
 function StationInfo() {
     const { id } = useParams();
@@ -26,6 +27,15 @@ function StationInfo() {
 
     return (
         <div style={{ padding: '1rem' }}>
+
+            <>
+                <div style={{ padding: '1rem' }}>
+                    {/* infos station */}
+                </div>
+                <List />
+            </>
+
+            
             <h1>📍 Station {station.name[0]?.text || id}</h1>
             <p><strong>Adresse :</strong> {station.address}</p>
             <p><strong>Code postal :</strong> {station.post_code}</p>
@@ -45,7 +55,7 @@ function StationInfo() {
             <p><strong>Méthodes de paiement :</strong> {station.rental_methods.join(', ')}</p>
             <p><strong>Coordonnées GPS :</strong> [{station.coordinates.coordinates.join(', ')}]</p>
         </div>
-    );
+);
 }
 
 export default StationInfo;
