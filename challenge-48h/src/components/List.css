@@ -1,0 +1,14 @@
+.container-right{
+    background-color: #DBECF6;
+    width: 22vw;
+    height: 100%;
+    left: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.container-right img {
+    width: 200px;
+}
+  
