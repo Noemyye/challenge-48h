@@ -7,6 +7,7 @@ import './index.css';
 import App from './App';
 import StationInfo from './components/station.jsx'; // attention à l'orthographe de "compoment"
 import List from './components/List.jsx';
+import Login from './components/Login.jsx';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -17,6 +18,7 @@ root.render(
                 <Route path="/" element={<App />} />
                 <Route path="/station/:id" element={<StationInfo />} />
                 <Route path="/list" element={<List />} />
+                <Route path="/login" element={<Login />} />
             </Routes>
         </BrowserRouter>
     </StrictMode>
