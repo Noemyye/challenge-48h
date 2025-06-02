@@ -8,6 +8,8 @@ function List() {
       <img 
         src={logo}
       />
+      <div className="container-list">
+      </div>
     </div>
   );
 }

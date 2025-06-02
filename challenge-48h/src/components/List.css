@@ -1,14 +1,25 @@
 .container-right{
     background-color: #DBECF6;
     width: 22vw;
-    height: 100%;
-    left: 0;
-    top: 0;
+    height: 100vh;
+    left: 0%;
+    top: 0%;
     display: flex;
-    justify-content: center;
+    justify-content: top;
+    flex-direction: column;
+    align-items: center;
 }
 
 .container-right img {
     width: 200px;
+    height: fit-content;
+    margin: 10px;
+}
+
+.container-list{
+    width: 85%;
+    height: 79%;
+    background-color: white;
+    border-radius: 10px;
 }
   
