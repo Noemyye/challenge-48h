@@ -29,9 +29,6 @@ function StationInfo() {
         <div style={{ padding: '1rem' }}>
 
             <>
-                <div style={{ padding: '1rem' }}>
-                    {/* infos station */}
-                </div>
                 <List />
             </>
 
