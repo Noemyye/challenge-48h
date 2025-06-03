@@ -66,7 +66,7 @@ function List() {
       </div>
       <div className='header'>
         <div className="header-buttons">
-          <a className='boutonHeader'>Accueil</a>
+          <Link to={'/'} className='boutonHeader'>Accueil</Link>
           <a className='boutonHeader'>Station</a>
           <a className='boutonHeader'>Boutique</a>
           <Link to={'/login'} className='boutonHeader'>Connexion</Link>
