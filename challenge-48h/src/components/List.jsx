@@ -3,16 +3,13 @@ import './List.css';
 import logo from '../assets/Logo_TBM.png';
 import search from '../assets/Search.png';
 import open from '../assets/open.png';
+import { Link } from 'react-router-dom';
 import close from '../assets/close.png';
-
 
 function List() {
   const [stations, setStations] = useState([]);
-  const [error, setError] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
-  const filteredStations = stations.filter((station) =>
-    station.name[0]?.text.toLowerCase().includes(searchTerm.toLowerCase())
-  );  
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     fetch(`http://10.33.70.223:3000/api/stations`, {
@@ -29,8 +26,12 @@ function List() {
       .catch((err) => setError(err.message));
   }, []);
 
+  const filteredStations = stations.filter((station) =>
+    station.name[0]?.text.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
-    <div className='container'>
+    <div className='container-main'>
       <div className="container-right">
         <img src={logo} alt="Logo TBM" />
         
@@ -46,85 +47,39 @@ function List() {
             />
           </div>
 
-          <ul>
-              <li className='station'>
-                <img src={open}/>
-                Place Gambetta
-              </li>
-              <li className='station'>
-              <img src={open}/>
-                Place Gambetta
-              </li>
-              <li className='station'>
-              <img src={open}/>
-                Place Gambetta
-              </li>
-              <li className='station'>
-              <img src={open}/>
-                Place Gambetta
-              </li>
-              <li className='station'>
-              <img src={close}/>
-                Place Gambetta
-              </li>
-              <li className='station'>
-              <img src={open}/>
-                Place Gambetta
-              </li>
-              <li className='station'>
-              <img src={open}/>
-                Place Gambetta
-              </li>
-              <li className='station'>
-              <img src={open}/>
-                Place Gambetta
-              </li>
-              <li className='station'>
-              <img src={close}/>
-                Place Gambetta
-              </li>
-              <li className='station'>
-              <img src={open}/>
-                Place Gambetta
-              </li>
-              <li className='station'>
-              <img src={open}/>
-                Place Gambetta
-              </li>
-              <li className='station'>
-              <img src={open}/>
-                Place Gambetta
-              </li>
-              <li className='station'>
-              <img src={close}/>
-                Place Gambetta
-              </li>
+          {error && <p className="error">{error}</p>}
+
+          <ul className="station-list">
+            {filteredStations.map((station, index) => (
+              <Link to={`/station/${station._id}`} key={station._id || index} className="station-link">
+                <li className='station'>
+                  <img
+                    src={station.is_installed === true ? open : close}
+                    alt={station.is_installed}
+                  />
+                  {station.name[0]?.text || 'Nom inconnu'}
+                </li>
+              </Link>
+            ))}
           </ul>
         </div>
       </div>
-
       <div className='header'>
-        <a className='boutonHeader'>
-          Accueil
-        </a>
-        <a className='boutonHeader'>
-          Station
-        </a>
-        <a className='boutonHeader'>
-          Boutique
-        </a>
-        <a className='boutonHeader'>
-          Connexion
-        </a>
+          <a className='boutonHeader'>
+            Accueil
+          </a>
+          <a className='boutonHeader'>
+            Station
+          </a>
+          <a className='boutonHeader'>
+            Boutique
+          </a>
+          <a className='boutonHeader'>
+            Connexion
+          </a>
       </div>
     </div>
   );
 }
 
 export default List;
-
-//{stations.map((station, index) => (   {error && <p className="error">{error}</p>}
-  //<li key={station._id || index}>
-  //{station.name[0]?.text || 'Nom inconnu'}
-//</li>
-//))}

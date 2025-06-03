@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
-.container {
+.container-main {
     display: flex;
 }
 
@@ -49,7 +49,7 @@
 
 .search img {
     width: 20px;
-    height: fit-content;
+    height: 20px;
 }
 
 .search input {
@@ -58,7 +58,7 @@
     background-color: #e7e5e5;
 }
 
-.container-list ul {
+.station-list {
     width: 85%;
     padding: 0;
     max-height: 100%; /* ou ce que tu veux */
@@ -91,5 +91,11 @@
     border-radius: 10px;
     font-size: 20px;
     font-weight: 500;
+}
+  
+.station-link {
+    text-decoration: none;
+    color: inherit;
+    width: 100%;
 }
   
