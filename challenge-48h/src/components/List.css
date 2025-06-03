@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+.container {
+    display: flex;
+}
+
 .container-right{
     background-color: #DBECF6;
     width: 22vw;
@@ -20,6 +26,70 @@
     width: 85%;
     height: 79%;
     background-color: white;
+    border-radius: 7px;
+    display: flex;
+    justify-content: top;
+    flex-direction: column;
+    align-items: center;
+}
+  
+.container-list p {
+    font-family: 'Montserrat';
+    font-size: 20px;
+    font-weight: 500;
+    margin: 15px;
+}
+
+.search {
+    background-color: #e7e5e5;
+    border-radius: 13px;
+    display: flex;
+    width: 85%;
+}
+
+.search img {
+    width: 20px;
+    height: fit-content;
+}
+
+.search input {
+    border: none;
+    font-size: 16px;
+    background-color: #e7e5e5;
+}
+
+.container-list ul {
+    width: 85%;
+    padding: 0;
+    max-height: 100%; /* ou ce que tu veux */
+    overflow-y: auto;
+}
+
+.station {
+    background-color: #e7e5e5;
+    border-radius: 13px;
+    display: flex;
+    align-items: center;
+    height: 40px;
+    margin: 15px 0;
+}
+
+.station img {
+    width: 20px;
+}
+
+.header {
+    height: fit-content;
+    display: flex;
+    gap: 90px;
+    padding: 30px;
+}
+
+.boutonHeader {
+    background-color: #DBECF6;
+    padding: 10px 45px;
     border-radius: 10px;
+    font-size: 20px;
+    font-weight: 500;
 }
   

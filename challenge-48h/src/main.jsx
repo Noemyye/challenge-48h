@@ -1,12 +1,25 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.jsx'
-import List from './components/List.jsx';
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { StrictMode } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <List/>
-    <App />
-  </StrictMode>,
-)
+import './index.css';
+import App from './App';
+import StationInfo from './components/station.jsx'; // attention à l'orthographe de "compoment"
+import List from './components/List.jsx';
+import Login from './components/Login.jsx';
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+
+root.render(
+    <StrictMode>
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<App />} />
+                <Route path="/station/:id" element={<StationInfo />} />
+                <Route path="/list" element={<List />} />
+                <Route path="/login" element={<Login />} />
+            </Routes>
+        </BrowserRouter>
+    </StrictMode>
+);
