@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom/client';
 import { StrictMode } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-import './index.css';
 import App from './App';
 import StationInfo from './components/station.jsx'; // attention à l'orthographe de "compoment"
 import List from './components/List.jsx';

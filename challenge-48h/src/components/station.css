@@ -1,3 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    font-family: 'Montserrat', sans-serif;
+}
+
+
 .layout {
     display: flex;
     height: 100vh;
@@ -12,7 +19,6 @@
     flex-grow: 1;
     padding: 2rem;
     overflow-y: auto;
-    border: 2px solid red;
 }
 
 .station-content {
@@ -84,4 +90,36 @@ textarea {
 
 .right-column {
     flex: 1;
+}
+
+.info-container {
+    background-color: #D9D9D9;
+    border-radius: 10px;
+    justify-content: center;
+    text-align: center;
+}
+
+.stats-row {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.stats-row .stat-box {
+    width: 130px;
+    height: 130px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    border-radius: 15px;
+}
+
+.info-panel img {
+    width: 22px;
+    height: 22px;
+    margin-right: 10px;
 }
