@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import List from './List.jsx';
 import './station.css';
+import open from "../assets/open.png";
+import close from "../assets/close.png";
 
 
 function StationInfo() {
@@ -39,45 +41,63 @@ function StationInfo() {
             <div className="info-panel">
                 {station ? (
                     <>
-                        <h1>📍 {station.name[0]?.text || id}</h1>
+                        <h1> <img
+                            src={station.is_installed === true ? open : close}
+                            alt={station.is_installed}
+                        /> {station.name[0]?.text || id}</h1>
                         <div className="station-content">
                             {/* Colonne gauche : Informations générales */}
                             <div className="station-column left-column">
                                 <h3>📄 Informations générales</h3>
-                                <p>Station ID : {station.station_id}</p>
-                                <p>Capacité totale : {station.capacity} places</p>
-                                <p>Adresse : {station.address}</p>
-                                <p>Code postal : {station.post_code}</p>
-                                <p>Coordonnées : {lat}, {lon}</p>
-                                <a
-                                    href={`https://www.openstreetmap.org/?mlat=${lat}&mlon=${lon}`}
-                                    target="_blank"
-                                    rel="noreferrer"
-                                >
-                                    Voir sur OpenStreetMap
-                                </a>
-                                <p>Dernière mise à jour : {station.updatedAt}</p>
+                                <div className="info-container">
+                                    <p>Station ID : {station.station_id}</p>
+                                </div>
+                                <div className="info-container">
+                                    <p>Capacité totale : {station.capacity} places</p>
+                                </div>
+                                <div className="info-container">
+                                    <p>Adresse : {station.address}</p>
+                                </div>
+                                <div className="info-container">
+                                    <p>Code postal : {station.post_code}</p>
+                                </div>
+                                <div className="info-container">
+                                    <p>Coordonnées : {lat}, {lon}</p>
+                                </div>
+                                <div className="info-container">
+                                    <a
+                                        href={`https://www.openstreetmap.org/?mlat=${lat}&mlon=${lon}`}
+                                        target="_blank"
+                                        rel="noreferrer"
+                                    >
+                                        Voir sur OpenStreetMap
+                                    </a>
+                                </div>
+                                <div className="info-container">
+                                    <p>Dernière mise à jour : {station.updatedAt}</p>
+                                </div>
+
                             </div>
 
                             {/* Colonne centre : Données en temps réel */}
                             <div className="station-column center-column">
                                 <h3>📊 Disponibilité en temps réel</h3>
-                                <div className="stat-box green">
-                                    <strong>{station.num_vehicles_available}</strong>
-                                    <br/>
-                                    <span>Vélos disponibles</span>
-                                </div>
-                                <div className="stat-box blue">
-                                    <strong>{station.num_docks_available}</strong>
-                                    <br/>
-                                    <span>Places disponibles</span>
-                                </div>
-                                <div className="stat-box pink">
-                                    <strong>{station.capacity}</strong>
-                                    <br/>
-                                    <span>Capacité totale</span>
+                                <div className="stats-row">
+                                    <div className="stat-box green">
+                                        <strong>{station.num_vehicles_available}</strong>
+                                        <span>Vélos disponibles</span>
+                                    </div>
+                                    <div className="stat-box blue">
+                                        <strong>{station.num_docks_available}</strong>
+                                        <span>Places disponibles</span>
+                                    </div>
+                                    <div className="stat-box pink">
+                                        <strong>{station.capacity}</strong>
+                                        <span>Capacité totale</span>
+                                    </div>
                                 </div>
                             </div>
+
 
                             {/* Colonne droite : Avis */}
                             <div className="station-column right-column">
