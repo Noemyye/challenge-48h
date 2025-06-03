@@ -24,3 +24,34 @@ body {
 .custom-tooltip::before {
     border-top-color: #ccc;
 }
+
+.error {
+    color: #dc3545;
+    font-size: 12px;
+    display: block;
+    text-align: left;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.navigation-buttons {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.nav-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #DBECF6;
+    color: #000;
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.nav-button:hover {
+    background-color: #039CD2;
+    opacity: 0.8;
+}

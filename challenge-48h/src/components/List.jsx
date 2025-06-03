@@ -65,18 +65,18 @@ function List() {
         </div>
       </div>
       <div className='header'>
-          <a className='boutonHeader'>
-            Accueil
-          </a>
-          <a className='boutonHeader'>
-            Station
-          </a>
-          <a className='boutonHeader'>
-            Boutique
-          </a>
-          <a className='boutonHeader'>
-            Connexion
-          </a>
+        <Link to="/" className='boutonHeader'>
+          Accueil
+        </Link>
+        <a className='boutonHeader'>
+          Station
+        </a>
+        <a className='boutonHeader'>
+          Boutique
+        </a>
+        <Link to="/login" className='boutonHeader'>
+          Connexion
+        </Link>
       </div>
     </div>
   );
