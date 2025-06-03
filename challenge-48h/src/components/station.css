@@ -7,10 +7,6 @@
     box-sizing: border-box;
 }
 
-body, .layout {
-    background: #DBECF6;
-}
-
 .layout {
     display: flex;
     flex-direction: column;
