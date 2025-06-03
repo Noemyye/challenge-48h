@@ -69,7 +69,7 @@ function List() {
           <a className='boutonHeader'>Accueil</a>
           <a className='boutonHeader'>Station</a>
           <a className='boutonHeader'>Boutique</a>
-          <a className='boutonHeader'>Connexion</a>
+          <Link to={'/login'} className='boutonHeader'>Connexion</Link>
         </div>
         <img src='https://carto-maas.infotbm.com/assets/images/places/vcub.svg' className="header-logo" />
       </div>
