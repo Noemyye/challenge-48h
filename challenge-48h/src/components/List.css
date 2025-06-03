@@ -71,8 +71,30 @@
 .station-list {
     width: 85%;
     padding: 0;
-    max-height: 100%; /* ou ce que tu veux */
+    max-height: 100%;
     overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #e7e5e5 #ffffff;
+}
+
+/* Webkit scrollbar styles (Chrome, Safari, newer Edge) */
+.station-list::-webkit-scrollbar {
+    width: 3px;
+}
+
+.station-list::-webkit-scrollbar-track {
+    background: #ffffff;
+    border-radius: 3px;
+}
+
+.station-list::-webkit-scrollbar-thumb {
+    background-color: #e7e5e5;
+    border-radius: 3px;
+    border: 2px solid #ffffff;
+}
+
+.station-list::-webkit-scrollbar-thumb:hover {
+    background-color: #039CD2;
 }
 
 .station {
@@ -82,10 +104,12 @@
     align-items: center;
     height: 40px;
     margin: 15px 0;
+    padding: 0 15px;
 }
 
 .station img {
     width: 20px;
+    margin-right: 10px;
 }
 
 .header {
@@ -102,15 +126,31 @@
     align-items: center;
 }
 
+.header-buttons {
+    display: flex;
+    gap: 90px;
+    margin-left: auto;
+    margin-right: 100px;
+}
+
+.header-logo {
+    margin-left: 60px;
+    width: 60px;
+    height: 60px;
+}
+
 .boutonHeader {
     background-color: #DBECF6;
     padding: 10px 45px;
     border-radius: 10px;
     font-size: 20px;
+    text-decoration: none;
+    color: black;
     font-weight: 500;
     text-decoration: none;
     color: inherit;
     transition: background-color 0.2s;
+    white-space: nowrap;
 }
 
 .boutonHeader:hover {

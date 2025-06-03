@@ -9,6 +9,7 @@
     background-color: #DBECF6;
     width: 600px;
     border-radius: 10px;
+    border: 2px solid #000000;
 }
 
 .container-login h1{
@@ -30,10 +31,27 @@
     width: 80%;
     margin: 10px 0;
     padding: 8px;
+    border-radius: 5px;
+    font-size: 18px;
 }
 
 .container-login button {
     margin: 10px 0;
     padding: 8px 20px;
     background-color: #DBECF6;
-} 
+    width: 300px;
+    height: 40px;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.container-login button:hover{
+    background-color: #039CD2;
+    opacity: 80%;
+    cursor: pointer;
+}
+
+.container-login p{
+    padding: 10px 0px 20px 135px;
+}
