@@ -44,18 +44,28 @@
     background-color: #e7e5e5;
     border-radius: 13px;
     display: flex;
-    width: 85%;
+    align-items: center;
+    width: 90%;
+    padding: 8px 12px;
+    margin: 0 auto;
 }
 
 .search img {
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
+    margin-right: 8px;
 }
 
 .search input {
     border: none;
-    font-size: 16px;
-    background-color: #e7e5e5;
+    font-size: 14px;
+    background-color: transparent;
+    width: 100%;
+    outline: none;
+}
+
+.search input::placeholder {
+    color: #666;
 }
 
 .station-list {
@@ -79,10 +89,17 @@
 }
 
 .header {
-    height: fit-content;
+    height: 80px;
     display: flex;
     gap: 90px;
-    padding: 30px;
+    padding: 0 30px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 250px;
+    background-color: #f6fbff;
+    z-index: 5;
+    align-items: center;
 }
 
 .boutonHeader {
@@ -91,6 +108,13 @@
     border-radius: 10px;
     font-size: 20px;
     font-weight: 500;
+    text-decoration: none;
+    color: inherit;
+    transition: background-color 0.2s;
+}
+
+.boutonHeader:hover {
+    background-color: #c5dce6;
 }
   
 .station-link {
