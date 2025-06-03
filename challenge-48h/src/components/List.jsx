@@ -65,18 +65,13 @@ function List() {
         </div>
       </div>
       <div className='header'>
-        <Link to="/" className='boutonHeader'>
-          Accueil
-        </Link>
-        <a className='boutonHeader'>
-          Station
-        </a>
-        <a className='boutonHeader'>
-          Boutique
-        </a>
-        <Link to="/login" className='boutonHeader'>
-          Connexion
-        </Link>
+        <div className="header-buttons">
+          <a className='boutonHeader'>Accueil</a>
+          <a className='boutonHeader'>Station</a>
+          <a className='boutonHeader'>Boutique</a>
+          <a className='boutonHeader'>Connexion</a>
+        </div>
+        <img src='https://carto-maas.infotbm.com/assets/images/places/vcub.svg' className="header-logo" />
       </div>
     </div>
   );
