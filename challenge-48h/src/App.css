@@ -1,0 +1,26 @@
+body {
+    margin: 0;
+}
+
+.map-container {
+    position: absolute;
+    top: 110px;
+    left: 405px;
+    width: 1270px;
+    height: 760px;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.custom-tooltip {
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    padding: 5px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.custom-tooltip::before {
+    border-top-color: #ccc;
+}
